@@ -1,0 +1,52 @@
+
+makefile은 맨 앞에 대문자로 시작해야한다. ex) Makefile
+
+sum_test를 예로 들자면
+main.cpp
+sum.cpp
+sum.h
+
+우리가 최종적으로 만들어야하는건 실행 파일.
+= sum.h sum.cpp를 이용하여 sum.o 파일을 만들어야한다.
+
+-------------------Makefile---------------------
+all: sum
+
+sum: sum.o main.o			// Object 파일이 만들어져있다는걸 가정하고, sum을 실행하는 것.
+	g++ -o sum sum.o main.o	// 앞의 Tap키는 약속
+
+sum.o: sum.h sum.cpp		// 그리고 sum.o를 빌드하기 위해서는 sum.h과 sum.cpp가 있어야함
+	g++ -c -o sum.o sum.cpp 	// 실행할 명령어, 빌드할 파일들
+
+main.o: sum.h main.cpp
+	g++ -c -o main.o main.cpp
+
+clean:
+	rm -f sum.o main.o		// sum.o 같은 경우에는 임시 파일이라 일일이 다 지워줘야한다.
+	rm -f sum		// 실행파일은 소스코드가 아니니 지워줘야함.
+
+--------------------------------------------------
+
+1.
+터미널 창에서
+make sum.o 치면
+Makefile에 명시한대로 명령어가 쳐진다.
+
+1-1)
+make sum.o
+make main.o
+make sum
+하나씩 입력하면 최종 sum 실행 파일이 만들어짐
+
+2.
+make 명령어를 치면 all 부분이 실행되고, 
+1-1) 부분이 차례대로 실행되면서 최종 실행 파일이 만들어짐
+
+3.
+ls 해보면 sum이라는 실행 파일이 만들어졌고
+./sum
+10 값 입력하면
+sum = 55 출력된다.
+
+4.
+make clean 명령어를 치면 clean 부분이 실행됨.
