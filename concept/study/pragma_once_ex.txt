@@ -14,7 +14,7 @@ main.cpp처럼
 이런식으로 헤더 파일을 선언할 것이다.
 그럼 결과적으로 main.cpp에서 header1.h이 2번 선언되는 중복이 발생되는 것이다.
 
-+ 헤더 파일에는 마지막에 빈줄 하나 꼭 넣어주기. warning 뜰 수 있기 때문.
+      + 헤더 파일에는 마지막에 빈줄 하나 꼭 넣어주기. warning 뜰 수 있기 때문.
 
 
 출처 : http://blog.naver.com/PostView.nhn?blogId=white_cap&logNo=221002699804&redirect=Dlog&widgetTypeCall=true
